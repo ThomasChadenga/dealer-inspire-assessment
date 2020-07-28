@@ -12,13 +12,13 @@ class UsersTest extends TestCase
 
     public function testSubmit() {
         //arrange
-        $user = factory('App\Contact')->create([
+        $contact = factory('App\Contact')->create([
             'email' => 'test@test.com',
         ]);
         //act
-        $response = $this->get('/' . $user->id);
+        $response = $this->post('/contact/submit');
         //assert
-        $this->seeInDatabase('users', ['email' => 'test@test.com']);
+        $this->seeInDatabase('contacts', ['email' => 'test@test.com']);
     }
 
 }
