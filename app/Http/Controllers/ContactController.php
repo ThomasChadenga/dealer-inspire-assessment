@@ -37,7 +37,7 @@ class ContactController extends Controller
             $contact->save();
 
             //mail contact
-            Mail::to('guy-smiley@example.com')->send(new Contactsaved($contact));
+            Mail::to('guy-smiley@example.com')->send(new ContactSaved($contact));
 
             return response()->json('Contact successfully saved', 200);
         } catch (\Exception $e) {

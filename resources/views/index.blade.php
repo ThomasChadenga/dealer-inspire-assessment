@@ -123,10 +123,10 @@
                         <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="email" id="email" class="form-control" placeholder="Email" required>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phnoe" id="phone" placeholder="Contact Number"/>
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Contact Number"/>
                     </div>
                     <div class="form-group">
                         <textarea  name="message" id="message" class="form-control" placeholder="Message" required ></textarea>
