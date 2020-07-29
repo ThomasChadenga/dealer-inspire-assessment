@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contact;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class ContactController extends Controller
 {
@@ -31,7 +32,14 @@ class ContactController extends Controller
         if (!empty($request->phone)) $contact->phone = filter_var($request->phone, FILTER_SANITIZE_STRING);
         $contact->message = $request->message;
        
-        $contact->save();
-        return redirect('/');
-     }
+        try {
+            $contact->save();
+
+            //mail contact
+
+            return response()->json('Contact successfully saved', 200);
+        } catch (\Exception $e) {
+            return response()->json('Error saving message', 400);
+        }
+    }
 }

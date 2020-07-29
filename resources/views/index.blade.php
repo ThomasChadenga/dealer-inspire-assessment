@@ -115,7 +115,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Guy Smiley</h2>
                 <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
-                <form action="{{ url('contact/submit') }}" method="POST" class="form-horizontal">
+                <form action="{{ url('api/contact/submit') }}" method="POST" class="form-horizontal">
                     <div class="form-group">
                         <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name" required>
                     </div>
