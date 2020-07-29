@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- CSRF Token Meta Added -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Dealer Inspire Code Challenge</title>
 
@@ -115,7 +117,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Guy Smiley</h2>
                 <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
-                <form action="{{ url('api/contact/submit') }}" method="POST" class="form-horizontal">
+                <form action="" method="POST" class="form-horizontal" id="contactForm">
                     <div class="form-group">
                         <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name" required>
                     </div>
@@ -135,7 +137,7 @@
                     <!-- Add User Button -->
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
-                            <button type="submit" class="btn btn-default"> Submit
+                            <button type="submit" class="btn btn-default" id="submit"> Submit
                             </button>
                         </div>
                     </div>
@@ -168,6 +170,39 @@
 
     <!-- Theme JavaScript -->
     <script src="../js/grayscale.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#submit').click(function(e){
+            e.preventDefault();
+
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+
+            $('#submit').html('Sending...');
+
+            var ajaxRequest = $.ajax({
+                url: '/api/contact/submit',
+                method: 'post',
+                data: $('#contactForm').serialize(),
+                dataType: "json",
+            });
+
+            ajaxRequest.done(function(msg){
+                $('#submit').html('Submit');
+                alert(msg);
+            });
+
+            ajaxRequest.fail(function(jqXHR, status, msg){
+                $('#submit').html('Submit');
+                alert(jqXHR.responseJSON);
+            });
+            });
+        });
+    </script>
 
 </body>
 
