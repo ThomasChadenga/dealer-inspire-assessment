@@ -184,6 +184,8 @@
 
                 $('#submit').html('Sending...');
 
+                $('#contactForm').validate();
+
                 var ajaxRequest = $.ajax({
                     url: '/api/contact/submit',
                     method: 'post',

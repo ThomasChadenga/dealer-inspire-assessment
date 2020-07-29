@@ -15,15 +15,13 @@ class ContactController extends Controller
         $validator = Validator::make($request->all(), [
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|email|max:255',
             'phone' => 'max:255',
             'message' => 'required'
         ]);
     
         if ($validator->fails()) {
-            return redirect('/')
-                ->withInput()
-                ->withErrors($validator);
+            return response()->json($validator->errors()->all(), 400);
         }
 
         $contact = new Contact;
@@ -41,7 +39,7 @@ class ContactController extends Controller
 
             return response()->json('Contact successfully saved', 200);
         } catch (\Exception $e) {
-            return response()->json('Error saving message', 400);
+            return response()->json('Error saving message', 500);
         }
     }
 }
