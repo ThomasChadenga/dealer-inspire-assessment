@@ -1,12 +1,12 @@
 <?php
-namespace Tests;
+namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Contact;
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UsersTest extends TestCase
+class ContactsTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -18,7 +18,7 @@ class UsersTest extends TestCase
         //act
         $response = $this->post('/contact/submit');
         //assert
-        $this->seeInDatabase('contacts', ['email' => 'test@test.com']);
+        $this->assertDatabaseHas('contacts', ['email' => 'test@test.com']);
     }
 
 }

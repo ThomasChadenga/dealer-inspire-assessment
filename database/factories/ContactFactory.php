@@ -10,7 +10,7 @@ $factory->define(Contact::class, function (Faker $faker) {
         'firstname' => $faker->firstname,
         'lastname' => $faker->lastname,
         'email' => $faker->email,
-        'phone' => $faker->phone,
-        'message' => $faker->message
+        'phone' => $faker->phoneNumber,
+        'message' => $faker->realText
     ];
 });
