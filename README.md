@@ -9,10 +9,10 @@ This is a Laravel app that saves a contact form
 3. Rename ```.env.sample``` to ```.env```
 4. Register with mailtrap and copy your username and password to your ```.env``` file
 5. Go to your app root folder and run ```php artisan migrate``` to set up your table
-6. In root folder run ```php artisan serve --port=9999```
+6. In root folder run ```php -S 127.0.0.1:9999 -t public```
 7. Go to browser and type ```localhost:9999``` to run app
 
 ## Unit test
 
-1. To run your unit tests, in the root folder type ```./vendor/bin/phpunit```
+1. To run your unit tests, in the root folder type ```phpunit```
 
