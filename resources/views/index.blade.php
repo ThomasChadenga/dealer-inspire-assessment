@@ -174,32 +174,32 @@
     <script>
         $(document).ready(function(){
             $('#submit').click(function(e){
-            e.preventDefault();
+                e.preventDefault();
 
-            $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-            });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
 
-            $('#submit').html('Sending...');
+                $('#submit').html('Sending...');
 
-            var ajaxRequest = $.ajax({
-                url: '/api/contact/submit',
-                method: 'post',
-                data: $('#contactForm').serialize(),
-                dataType: "json",
-            });
+                var ajaxRequest = $.ajax({
+                    url: '/api/contact/submit',
+                    method: 'post',
+                    data: $('#contactForm').serialize(),
+                    dataType: "json",
+                });
 
-            ajaxRequest.done(function(msg){
-                $('#submit').html('Submit');
-                alert(msg);
-            });
+                ajaxRequest.done(function(msg){
+                    $('#submit').html('Submit');
+                    alert(msg);
+                });
 
-            ajaxRequest.fail(function(jqXHR, status, msg){
-                $('#submit').html('Submit');
-                alert(jqXHR.responseJSON);
-            });
+                ajaxRequest.fail(function(jqXHR, status, msg){
+                    $('#submit').html('Submit');
+                    alert(jqXHR.responseJSON);
+                });
             });
         });
     </script>
