@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contact;
 use Illuminate\Support\Facades\Validator;
-use Mail;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactSaved;
 
 class ContactController extends Controller
 {
@@ -36,6 +37,7 @@ class ContactController extends Controller
             $contact->save();
 
             //mail contact
+            Mail::to('guy-smiley@example.com')->send(new Contactsaved($contact));
 
             return response()->json('Contact successfully saved', 200);
         } catch (\Exception $e) {

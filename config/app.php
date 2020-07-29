@@ -229,4 +229,7 @@ return [
 
     ],
 
+    'mail_from_name' => env('MAIL_FROM_NAME'),
+    'mail_from_address' => env('MAIL_FROM_ADDRESS'),
+
 ];
